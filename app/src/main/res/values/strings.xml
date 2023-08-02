@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ViewTestApp</string>
+    <string name="btnCurrent">現在時刻</string>
+</resources>
