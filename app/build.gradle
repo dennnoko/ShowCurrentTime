@@ -7,6 +7,11 @@ android {
     namespace 'com.example.viewtestapp'
     compileSdk 33
 
+    //ViewBindingを有効にする
+    buildFeatures {
+        viewBinding true
+    }
+
     defaultConfig {
         applicationId "com.example.viewtestapp"
         minSdk 24
