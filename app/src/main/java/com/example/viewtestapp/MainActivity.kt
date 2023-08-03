@@ -12,22 +12,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //イベントリスナーを利用してみる
-        val btnCurrent = findViewById<Button>(R.id.btnCurrent) //イベントリスナーの登録先を予め取得
-        btnCurrent.setOnClickListener { //取得した登録先のsetOnClickListenerメソッドを利用し、イベント発生時に実行されるようにする
-            btnCurrentClick() //実行したいメソッドの呼び出し
-        }
+        //イベントリスナーを利用してみる。ラムダ式を利用
+        val btnCurrent = findViewById<Button>(R.id.btnCurrent) //イベントリスナーの登録先のViewを予め取得
+        btnCurrent.setOnClickListener({v: View -> //setOnClickListenerメソッドを呼び出し、ボタンにクリックリスナーを登録している。クリックリスナーとしてラムダ式が使用されている。
+            val txtResult = findViewById<TextView>(R.id.textResult) //Viewの取得
+            txtResult.text = Date().toString() //取得したViewのtextプロパティに値を代入
+        })
     }
-
-    //メソッドの定義
-    fun btnCurrentClick() {
-        var txtResult = findViewById<TextView>(R.id.textResult) //Viewの取得 後から中の値を書き換えるため var を使用
-        txtResult.text = Date().toString() //日付をtextに代入
-    }
-
-    //this fun run when btn is Clicked
-    /*fun btnCurrentClick(v: View) { //ボタンのクリックされたタイミングでViewオブジェクトを引数としてvが渡される
-        val txtResult = findViewById<TextView>(R.id.textResult) //現在時刻を表示するTextViewオブジェクトを取得
-        txtResult.text = Date().toString() //txtResultに紐づけたTextViewオブジェクトのtextに日付をStringに変換して格納（Date()メソッドはjava.util.Date）
-    }*/
 }
