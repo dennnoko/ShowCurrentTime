@@ -29,10 +29,8 @@ class MainActivity : AppCompatActivity() {
         val txtResult = findViewById<TextView>(R.id.textResult) //Viewの取得と値の保存
         outState.putString("txtResult", txtResult.text.toString())
 
-        //Toast 短時間の短いメッセージの表示（ちょっとした通知や開発時のログ表示に使用する）
-        val toast = Toast.makeText(this, //Toastクラスのオブジェクトを生成。 this で現在のActivityをcontextとして渡している。 引数は、context、text、表示時間（LENGTH_LONG または LENGTH_SHORT）
-            "Activityの破棄時にonSaveInstanceStateが実行される", Toast.LENGTH_LONG)
-        toast.show()
+        //Toast
+        Toast.makeText(this, "Activityの破棄時にonSaveInstanceStateが実行される", Toast.LENGTH_LONG).show()
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) { //Activityが再生成されるときに実行されるメソッド
@@ -41,8 +39,6 @@ class MainActivity : AppCompatActivity() {
         txtResult.text = savedInstanceState.getString("txtResult")
 
         //Toast
-        val toast = Toast.makeText(this,
-            "Activityの再生成時にonRestoreInstanceStateが実行される", Toast.LENGTH_LONG)
-        toast.show()
+        Toast.makeText(this, "Activityの再生成時にonRestoreInstanceStateが実行される", Toast.LENGTH_SHORT).show()
     }
 }
