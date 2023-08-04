@@ -2,6 +2,7 @@ package com.example.viewtestapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -13,6 +14,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding:ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //Log
+        Log.d("CurrentTime", Date().toString()) //dはデバッグ情報を表すメソッド
+
         //ViewBinding
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
