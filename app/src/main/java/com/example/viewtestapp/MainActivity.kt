@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         outState.putString("txtResult", txtResult.text.toString())
 
         //Toast 短時間の短いメッセージの表示（ちょっとした通知や開発時のログ表示に使用する）
-        val toast = Toast.makeText(this,
+        val toast = Toast.makeText(this, //Toastクラスのオブジェクトを生成。 this で現在のActivityをcontextとして渡している。 引数は、context、text、表示時間（LENGTH_LONG または LENGTH_SHORT）
             "Activityの破棄時にonSaveInstanceStateが実行される", Toast.LENGTH_LONG)
         toast.show()
     }
