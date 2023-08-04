@@ -23,15 +23,15 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        val txtResult = findViewById<TextView>(R.id.textResult)
+    override fun onSaveInstanceState(outState: Bundle) { //Activityが破棄されるタイミングで実行されるメソッド //Bundleはアプリの状態をキーと値の組み合わせで管理するためのオブジェクト
+        super.onSaveInstanceState(outState) //親クラスのonSaveInstanceState()を呼び出す
+        val txtResult = findViewById<TextView>(R.id.textResult) //Viewの取得と値の保存
         outState.putString("txtResult", txtResult.text.toString())
     }
 
-    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-        super.onRestoreInstanceState(savedInstanceState)
-        val txtResult = findViewById<TextView>(R.id.textResult)
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) { //Activityが再生成されるときに実行されるメソッド
+        super.onRestoreInstanceState(savedInstanceState) //親クラスのonRestoreInstanceState()を呼び出す
+        val txtResult = findViewById<TextView>(R.id.textResult) //Viewの取得と値の代入
         txtResult.text = savedInstanceState.getString("txtResult")
     }
 }
