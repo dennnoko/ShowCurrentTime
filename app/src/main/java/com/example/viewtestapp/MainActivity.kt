@@ -6,6 +6,7 @@ import android.os.PersistableBundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import com.example.viewtestapp.databinding.ActivityMainBinding
 import java.util.Date
 
@@ -27,11 +28,21 @@ class MainActivity : AppCompatActivity() {
         super.onSaveInstanceState(outState) //親クラスのonSaveInstanceState()を呼び出す
         val txtResult = findViewById<TextView>(R.id.textResult) //Viewの取得と値の保存
         outState.putString("txtResult", txtResult.text.toString())
+
+        //Toast 短時間の短いメッセージの表示（ちょっとした通知や開発時のログ表示に使用する）
+        val toast = Toast.makeText(this,
+            "Activityの破棄時にonSaveInstanceStateが実行される", Toast.LENGTH_LONG)
+        toast.show()
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) { //Activityが再生成されるときに実行されるメソッド
         super.onRestoreInstanceState(savedInstanceState) //親クラスのonRestoreInstanceState()を呼び出す
         val txtResult = findViewById<TextView>(R.id.textResult) //Viewの取得と値の代入
         txtResult.text = savedInstanceState.getString("txtResult")
+
+        //Toast
+        val toast = Toast.makeText(this,
+            "Activityの再生成時にonRestoreInstanceStateが実行される", Toast.LENGTH_LONG)
+        toast.show()
     }
 }
